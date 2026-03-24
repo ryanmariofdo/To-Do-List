@@ -1,38 +1,306 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #00171f 0%, #003459 50%, #007ea7 100%);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+}
+
 .App {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header {
+  background: rgba(0, 23, 31, 0.85);
+  backdrop-filter: blur(15px);
+  width: 90%;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border: 1px solid rgba(0, 168, 232, 0.3);
+}
+
+.title {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.title h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: white;
+  background-clip: text;
+  letter-spacing: 2px;
+  text-shadow: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header .inputContainer {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+}
+
+.header input {
+  width: 100%;
+  height: 50px;
+  border: 2px solid #003459;
+  border-radius: 12px;
+  padding: 0 1rem;
+  font-size: 16px;
+  font-family: inherit;
+  background: rgba(0, 23, 31, 0.6);
+  color: #ffffff;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.header input:focus {
+  border-color: #00a8e8;
+  background: rgba(0, 23, 31, 0.8);
+  box-shadow: 0 0 0 3px rgba(0, 168, 232, 0.2);
+  transform: translateY(-1px);
+}
+
+.header input::placeholder {
+  color: #ffffff;
+  font-weight: 400;
+}
+
+.header button {
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #007ea7 0%, #00a8e8 100%);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.5rem;
+}
+
+.header button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 168, 232, 0.4);
+}
+
+.header button:active {
+  transform: translateY(0);
+}
+
+.todoList {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 2rem;
+}
+
+.task {
+  width: 100%;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  background: rgba(0, 23, 31, 0.8);
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 52, 89, 0.5);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.task:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(0, 168, 232, 0.2);
+  border-color: rgba(0, 168, 232, 0.4);
+}
+
+.task .content {
+  flex: 1;
+  display: flex;
+  padding: 1rem 1.5rem;
+  align-items: center;
+  gap: 1rem;
+}
+
+.task .content span:first-child {
+  flex: 2;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  word-wrap: break-word;
+  padding-right: 1rem;
+}
+
+.task .content span:last-child {
+  flex: 0 0 auto;
+  font-size: 14px;
+  font-weight: 600;
+  color: #00a8e8;
+  background: rgba(0, 168, 232, 0.15);
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  white-space: nowrap;
+  border: 1px solid rgba(0, 168, 232, 0.3);
+}
+
+.task .content span:last-child::after {
+  content: " days";
+  color: #007ea7;
+  font-weight: 400;
+}
+
+.task button {
+  width: 60px;
+  height: 100%;
+  min-height: 70px;
+  border: none;
+  background: linear-gradient(135deg, #003459 0%, #00171f 100%);
+  color: #00a8e8;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  border-left: 1px solid rgba(0, 52, 89, 0.5);
 }
 
-.App-link {
-  color: #61dafb;
+.task button:hover {
+  background: linear-gradient(135deg, #007ea7 0%, #003459 100%);
+  color: #ffffff;
+  transform: scale(1.05);
 }
 
-@keyframes App-logo-spin {
+.task button:active {
+  transform: scale(0.98);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    width: 95%;
+    margin: 1rem auto;
+    padding: 1.5rem;
+  }
+
+  .title h1 {
+    font-size: 2rem;
+  }
+
+  .todoList {
+    width: 95%;
+  }
+
+  .task {
+    min-height: 80px;
+  }
+
+  .task .content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  .task .content span:first-child {
+    padding-right: 0;
+  }
+
+  .task .content span:last-child {
+    align-self: flex-end;
+  }
+
+  .task button {
+    width: 50px;
+    min-height: 80px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 1rem;
+  }
+
+  .title h1 {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
+
+  .header input {
+    height: 45px;
+    font-size: 15px;
+  }
+
+  .header button {
+    height: 45px;
+    font-size: 14px;
+  }
+}
+
+/* Loading animation for smooth transitions */
+@keyframes slideIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(20px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+.task {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Empty state styling */
+.todoList:empty::before {
+  content: "No tasks yet. Add your first task above! �";
+  color: rgba(250, 250, 250, 0.8);
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-align: center;
+  padding: 3rem;
+  margin-top: 2rem;
+}
+
+/* Footer styling */
+.footer {
+  width: 100%;
+  padding: 2rem 0;
+  margin-top: 3rem;
+  text-align: center;
+  background: rgba(0, 23, 31, 0.6);
+}
+
+.footer p {
+  margin: 0;
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
 }
