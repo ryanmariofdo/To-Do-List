@@ -11,5 +11,6 @@ The To-Do List application is a responsive and user-friendly task management too
 
 ## Tools and Technologies
 
-- **Languages**: TypeScript, CSS
-- **Frameworks**: React
+- React
+- TypeScript
+- CSS
